@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bonga Rewards Hub | Loyalty & Rewards</title>
+
+<style>
+:root{
+    --green:#00a651;
+    --dark:#006b3c;
+    --light:#f3faf6;
+    --lime:#8dc63f;
+    --text:#17231d;
+    --muted:#68756e;
+    --white:#ffffff;
+    --border:#e5ebe7;
+    --shadow:0 12px 35px rgba(0,70,40,.08);
+    --radius:18px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+    background:#f7faf8;
+    color:var(--text);
+}
+
+button,input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* HEADER */
+
+.header{
+    height:72px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:800;
+    font-size:20px;
+}
+
+.brand-mark{
+    width:43px;
+    height:43px;
+    border-radius:13px;
+    background:var(--green);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:19px;
+}
+
+.brand small{
+    display:block;
+    color:var(--muted);
+    font-size:10px;
+    font-weight:500;
+    margin-top:2px;
+}
+
+.nav{
+    display:flex;
+    gap:25px;
+    align-items:center;
+}
+
+.nav a{
+    font-size:14px;
+    color:#445149;
+    font-weight:600;
+}
+
+.nav a:hover{
+    color:var(--green);
+}
+
+.account{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar{
+    width:39px;
+    height:39px;
+    border-radius:50%;
+    background:#dff5e9;
+    color:var(--dark);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:800;
+}
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:0;
+    font-size:25px;
+}
+
+/* HERO */
+
+.hero{
+    background:
+        radial-gradient(circle at 90% 20%,rgba(141,198,63,.18),transparent 28%),
+        linear-gradient(135deg,#006b3c,#00a651);
+    color:white;
+    padding:70px 5% 85px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border:80px solid rgba(255,255,255,.05);
+    border-radius:50%;
+    right:-180px;
+    top:-220px;
+}
+
+.hero-content{
+    max-width:1200px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+.eyebrow{
+    display:inline-flex;
+    background:rgba(255,255,255,.13);
+    padding:9px 14px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(35px,5vw,62px);
+    line-height:1.05;
+    max-width:750px;
+    letter-spacing:-2px;
+}
+
+.hero p{
+    max-width:650px;
+    margin-top:20px;
+    line-height:1.7;
+    color:#e7fff1;
+}
+
+.hero-actions{
+    margin-top:30px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:0;
+    border-radius:12px;
+    padding:14px 21px;
+    font-weight:750;
+    transition:.2s;
+}
+
+.btn-primary{
+    background:#fff;
+    color:var(--dark);
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+}
+
+.btn-outline{
+    background:rgba(255,255,255,.1);
+    color:white;
+    border:1px solid rgba(255,255,255,.3);
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:0 5%;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+    margin-top:-45px;
+    position:relative;
+    z-index:10;
+}
+
+.balance-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:18px;
+}
+
+.balance-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:25px;
+    box-shadow:var(--shadow);
+}
+
+.balance-main{
+    background:linear-gradient(135deg,#064f32,#00a651);
+    color:white;
+}
+
+.card-label{
+    font-size:12px;
+    font-weight:700;
+    opacity:.75;
+}
+
+.balance-number{
+    font-size:38px;
+    font-weight:850;
+    margin:9px 0;
+}
+
+.balance-sub{
+    font-size:12px;
+    opacity:.8;
+}
+
+.card-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:#e8f7ee;
+    color:var(--green);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    margin-bottom:18px;
+}
+
+/* QUICK ACTIONS */
+
+.section{
+    padding:70px 0 0;
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.section-title{
+    font-size:27px;
+    font-weight:850;
+}
+
+.section-description{
+    color:var(--muted);
+    margin-top:7px;
+    font-size:14px;
+}
+
+.quick-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.quick-card{
+    background:white;
+    border:1px solid var(--border);
+    padding:22px;
+    border-radius:16px;
+    transition:.2s;
+}
+
+.quick-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
+}
+
+.quick-card h3{
+    font-size:15px;
+    margin-bottom:6px;
+}
+
+.quick-card p{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* REWARDS */
+
+.reward-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.reward-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:17px;
+    overflow:hidden;
+    transition:.2s;
+}
+
+.reward-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
+}
+
+.reward-image{
+    height:150px;
+    background:linear-gradient(135deg,#dff7e9,#f5fff9);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:52px;
+}
+
+.reward-body{
+    padding:18px;
+}
+
+.reward-body h3{
+    font-size:16px;
+}
+
+.reward-body p{
+    color:var(--muted);
+    font-size:12px;
+    margin:7px 0 15px;
+}
+
+.points{
+    font-size:13px;
+    font-weight:800;
+    color:var(--green);
+}
+
+.redeem{
+    margin-top:14px;
+    width:100%;
+    background:var(--green);
+    color:white;
+    border:0;
+    padding:11px;
+    border-radius:10px;
+    font-weight:750;
+}
+
+/* STAWISHA */
+
+.stawisha{
+    margin-top:70px;
+    border-radius:25px;
+    background:
+        radial-gradient(circle at 85% 20%,rgba(141,198,63,.25),transparent 25%),
+        linear-gradient(135deg,#073d29,#006b3c);
+    color:white;
+    padding:45px;
+    overflow:hidden;
+    position:relative;
+}
+
+.stawisha-content{
+    max-width:680px;
+}
+
+.stawisha h2{
+    font-size:34px;
+    margin:12px 0;
+}
+
+.stawisha p{
+    color:#d8f7e5;
+    line-height:1.7;
+}
+
+.stawisha-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:30px;
+}
+
+.stawisha-item{
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:14px;
+    padding:18px;
+}
+
+.stawisha-item strong{
+    display:block;
+    font-size:20px;
+    margin-bottom:4px;
+}
+
+/* HISTORY */
+
+.history{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.history-row{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:15px;
+    padding:18px 22px;
+    border-bottom:1px solid var(--border);
+    align-items:center;
+    font-size:13px;
+}
+
+.history-row:last-child{
+    border-bottom:0;
+}
+
+.history-head{
+    background:#f7faf8;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:800;
+}
+
+.status{
+    display:inline-block;
+    padding:6px 9px;
+    border-radius:20px;
+    background:#e7f7ee;
+    color:#087341;
+    font-size:10px;
+    font-weight:800;
+}
+
+/* INFO */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.info-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:25px;
+}
+
+.info-card h3{
+    margin-bottom:10px;
+}
+
+.info-card p{
+    color:var(--muted);
+    line-height:1.65;
+    font-size:13px;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:80px;
+    background:#08281b;
+    color:#cce3d5;
+    padding:55px 5% 25px;
+}
+
+.footer-grid{
+    max-width:1250px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:35px;
+}
+
+footer h3{
+    color:white;
+    margin-bottom:15px;
+}
+
+footer a{
+    display:block;
+    color:#b9d4c5;
+    font-size:13px;
+    margin:9px 0;
+}
+
+.footer-bottom{
+    max-width:1250px;
+    margin:40px auto 0;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.1);
+    font-size:11px;
+    color:#91b09f;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:2000;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    background:white;
+    width:min(500px,100%);
+    border-radius:22px;
+    padding:28px;
+    box-shadow:0 25px 80px rgba(0,0,0,.2);
+    animation:pop .2s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(.95);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.close{
+    background:#f1f4f2;
+    border:0;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    font-size:20px;
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    font-size:12px;
+    font-weight:750;
+    margin-bottom:7px;
+}
+
+.form-group input{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:13px;
+    outline:none;
+}
+
+.form-group input:focus{
+    border-color:var(--green);
+}
+
+.modal-btn{
+    width:100%;
+    background:var(--green);
+    color:white;
+    border:0;
+    padding:14px;
+    border-radius:11px;
+    font-weight:800;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+    .nav{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .balance-grid{
+        grid-template-columns:1fr;
+    }
+
+    .quick-grid,
+    .reward-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .header{
+        padding:0 20px;
+    }
+
+    .brand{
+        font-size:16px;
+    }
+
+    .hero{
+        padding:50px 20px 75px;
+    }
+
+    .container{
+        padding:0 20px;
+    }
+
+    .hero h1{
+        letter-spacing:-1px;
+    }
+
+    .quick-grid,
+    .reward-grid,
+    .stawisha-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stawisha{
+        padding:28px 22px;
+    }
+
+    .stawisha h2{
+        font-size:27px;
+    }
+
+    .history{
+        overflow-x:auto;
+    }
+
+    .history-row{
+        min-width:600px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding-top:50px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="brand">
+        <div class="brand-mark">B</div>
+        <div>
+            Bonga Rewards
+            <small>Independent rewards portal</small>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#bonga">Bonga</a>
+        <a href="#rewards">Rewards</a>
+        <a href="#stawisha">Stawisha</a>
+        <a href="#history">Transactions</a>
+        <a href="#help">Help</a>
+    </nav>
+
+    <div class="account">
+        <div class="avatar">G</div>
+        <button class="menu-btn" onclick="toggleMobile()">☰</button>
+    </div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <span class="eyebrow">LOYALTY • REWARDS • REDEMPTION</span>
+
+        <h1>
+            Make more from your loyalty points.
+        </h1>
+
+        <p>
+            Manage your Bonga rewards, explore eligible redemption options,
+            track your activity and access business loyalty services from
+            one simple dashboard.
+        </p>
+
+        <div class="hero-actions">
+            <button class="btn btn-primary"
+                    onclick="scrollToSection('rewards')">
+                Explore Rewards
+            </button>
+
+            <button class="btn btn-outline"
+                    onclick="openModal('balanceModal')">
+                Check Balance
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<main class="container">
+
+<section class="dashboard" id="bonga">
+
+    <div class="balance-grid">
+
+        <div class="balance-card balance-main">
+
+            <div class="card-label">AVAILABLE BONGA POINTS</div>
+
+            <div class="balance-number" id="pointsBalance">
+                12,850
+            </div>
+
+            <div class="balance-sub">
+                Points available for eligible rewards
+            </div>
+
+        </div>
+
+
+        <div class="balance-card">
+
+            <div class="card-icon">↗</div>
+
+            <div class="card-label">
+                POINTS EARNED
+            </div>
+
+            <div class="balance-number">
+                19,420
+            </div>
+
+            <div class="balance-sub">
+                Total accumulated
+            </div>
+
+        </div>
+
+
+        <div class="balance-card">
+
+            <div class="card-icon">✓</div>
+
+            <div class="card-label">
+                POINTS REDEEMED
+            </div>
+
+            <div class="balance-number">
+                6,570
+            </div>
+
+            <div class="balance-sub">
+                Lifetime redemptions
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- QUICK ACTIONS -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <div>
+            <h2 class="section-title">Quick actions</h2>
+            <p class="section-description">
+                Manage your loyalty account quickly.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="quick-grid">
+
+        <div class="quick-card"
+             onclick="scrollToSection('rewards')">
+
+            <div class="card-icon">🎁</div>
+
+            <h3>Redeem Points</h3>
+
+            <p>
+                Explore eligible rewards and redemption options.
+            </p>
+
+        </div>
+
+
+        <div class="quick-card"
+             onclick="openModal('balanceModal')">
+
+            <div class="card-icon">◎</div>
+
+            <h3>Check Balance</h3>
+
+            <p>
+                View your current loyalty points balance.
+            </p>
+
+        </div>
+
+
+        <div class="quick-card"
+             onclick="scrollToSection('history')">
+
+            <div class="card-icon">↻</div>
+
+            <h3>Transaction History</h3>
+
+            <p>
+                Review previous reward activities.
+            </p>
+
+        </div>
+
+
+        <div class="quick-card"
+             onclick="scrollToSection('help')">
+
+            <div class="card-icon">?</div>
+
+            <h3>Get Help</h3>
+
+            <p>
+                Find answers and loyalty programme information.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REWARDS -->
+
+<section class="section" id="rewards">
+
+    <div class="section-header">
+
+        <div>
+            <h2 class="section-title">
+                Rewards catalogue
+            </h2>
+
+            <p class="section-description">
+                Choose from available loyalty redemption categories.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="reward-grid">
+
+        <div class="reward-card">
+
+            <div class="reward-image">📱</div>
+
+            <div class="reward-body">
+
+                <h3>Airtime</h3>
+
+                <p>
+                    Redeem eligible Bonga Points for airtime.
+                </p>
+
+                <div class="points">
+                    From 100 points
+                </div>
+
+                <button class="redeem"
+                        onclick="redeem('Airtime')">
+                    Redeem
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="reward-card">
+
+            <div class="reward-image">🌐</div>
+
+            <div class="reward-body">
+
+                <h3>Data Bundles</h3>
+
+                <p>
+                    Select eligible data resources using points.
+                </p>
+
+                <div class="points">
+                    From 100 points
+                </div>
+
+                <button class="redeem"
+                        onclick="redeem('Data Bundle')">
+                    Redeem
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="reward-card">
+
+            <div class="reward-image">💬</div>
+
+            <div class="reward-body">
+
+                <h3>Talk & SMS</h3>
+
+                <p>
+                    Redeem eligible minutes or SMS resources.
+                </p>
+
+                <div class="points">
+                    From 50 points
+                </div>
+
+                <button class="redeem"
+                        onclick="redeem('Talk & SMS')">
+                    Redeem
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="reward-card">
+
+            <div class="reward-image">🛍️</div>
+
+            <div class="reward-body">
+
+                <h3>Merchandise</h3>
+
+                <p>
+                    Browse eligible loyalty merchandise.
+                </p>
+
+                <div class="points">
+                    Availability varies
+                </div>
+
+                <button class="redeem"
+                        onclick="redeem('Merchandise')">
+                    View
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STAWISHA -->
+
+<section class="stawisha" id="stawisha">
+
+    <div class="stawisha-content">
+
+        <span class="eyebrow">
+            BUSINESS LOYALTY
+        </span>
+
+        <h2>
+            Stawisha Business Rewards
+        </h2>
+
+        <p>
+            A dedicated business area for eligible users to view loyalty
+            activity, rewards and redemption information. Availability
+            depends on the applicable programme rules and eligibility.
+        </p>
+
+        <div class="stawisha-grid">
+
+            <div class="stawisha-item">
+                <strong>8,420</strong>
+                <span>Reward points</span>
+            </div>
+
+            <div class="stawisha-item">
+                <strong>24</strong>
+                <span>Transactions</span>
+            </div>
+
+            <div class="stawisha-item">
+                <strong>Active</strong>
+                <span>Account status</span>
+            </div>
+
+        </div>
+
+        <br>
+
+        <button class="btn btn-primary"
+                onclick="openModal('stawishaModal')">
+            Open Stawisha
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- TRANSACTION HISTORY -->
+
+<section class="section" id="history">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2 class="section-title">
+                Recent activity
+            </h2>
+
+            <p class="section-description">
+                Your latest loyalty activity.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="history">
+
+        <div class="history-row history-head">
+            <div>Activity</div>
+            <div>Points</div>
+            <div>Date</div>
+            <div>Status</div>
+        </div>
+
+
+        <div class="history-row">
+            <div>Data Bundle Redemption</div>
+            <div>-500</div>
+            <div>30 Aug 2026</div>
+            <div><span class="status">Completed</span></div>
+        </div>
+
+
+        <div class="history-row">
+            <div>Bonga Points Earned</div>
+            <div>+850</div>
+            <div>28 Aug 2026</div>
+            <div><span class="status">Completed</span></div>
+        </div>
+
+
+        <div class="history-row">
+            <div>Airtime Redemption</div>
+            <div>-300</div>
+            <div>25 Aug 2026</div>
+            <div><span class="status">Completed</span></div>
+        </div>
+
+
+        <div class="history-row">
+            <div>Bonga Points Earned</div>
+            <div>+1,200</div>
+            <div>20 Aug 2026</div>
+            <div><span class="status">Completed</span></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INFORMATION -->
+
+<section class="section" id="help">
+
+    <div class="section-header">
+
+        <div>
+            <h2 class="section-title">
+                Information centre
+            </h2>
+
+            <p class="section-description">
+                Important information about loyalty redemption.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <div class="card-icon">?</div>
+
+            <h3>How redemption works</h3>
+
+            <p>
+                Select an eligible reward, review the required points and
+                confirm the redemption through the authorised channel.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-icon">🔒</div>
+
+            <h3>Keep your account secure</h3>
+
+            <p>
+                Never share your M-PESA PIN, account password or one-time
+                verification codes with another person.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-icon">ℹ</div>
+
+            <h3>Points expiry</h3>
+
+            <p>
+                Loyalty points are subject to the applicable programme
+                terms, including expiry conditions.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>Bonga Rewards</h3>
+
+            <p style="line-height:1.7;font-size:13px;">
+                An independent loyalty dashboard concept for demonstrating
+                rewards management, redemption and business loyalty
+                experiences.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Services</h3>
+
+            <a href="#bonga">Bonga Dashboard</a>
+            <a href="#rewards">Rewards</a>
+            <a href="#stawisha">Stawisha</a>
+            <a href="#history">Transactions</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Support</h3>
+
+            <a href="#help">Help Centre</a>
+            <a href="#">FAQs</a>
+            <a href="#">Security</a>
+            <a href="#">Contact</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Legal</h3>
+
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">Disclaimer</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 Bonga Rewards Hub. Independent demonstration platform.
+        This website is not affiliated with or endorsed by Safaricom PLC.
+
+    </div>
+
+</footer>
+
+
+<!-- BALANCE MODAL -->
+
+<div class="modal" id="balanceModal">
+
+    <div class="modal-box">
+
+        <div class="modal-head">
+
+            <div>
+                <h2>Check Bonga Balance</h2>
+                <p style="color:#68756e;font-size:12px;margin-top:5px;">
+                    Demo interface
+                </p>
+            </div>
+
+            <button class="close"
+                    onclick="closeModal('balanceModal')">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Mobile Number</label>
+
+            <input
+                id="phoneInput"
+                type="tel"
+                placeholder="07XX XXX XXX"
+                maxlength="13"
+            >
+
+        </div>
+
+
+        <button class="modal-btn"
+                onclick="checkBalance()">
+            Check Balance
+        </button>
+
+        <div id="balanceResult"
+             style="margin-top:18px;text-align:center;font-weight:800;">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- STAWISHA MODAL -->
+
+<div class="modal" id="stawishaModal">
+
+    <div class="modal-box">
+
+        <div class="modal-head">
+
+            <div>
+                <h2>Stawisha Rewards</h2>
+
+                <p style="color:#68756e;font-size:12px;margin-top:5px;">
+                    Business loyalty area
+                </p>
+            </div>
+
+            <button class="close"
+                    onclick="closeModal('stawishaModal')">
+                ×
+            </button>
+
+        </div>
+
+        <div class="info-card"
+             style="background:#f6fbf8;margin-bottom:18px;">
+
+            <h3>Business rewards</h3>
+
+            <p>
+                This demonstration area shows how an eligible business
+                loyalty dashboard can be structured.
+            </p>
+
+        </div>
+
+        <button class="modal-btn"
+                onclick="alert('Demo: Stawisha dashboard opened.')">
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* MOBILE MENU */
+
+function toggleMobile(){
+
+    const nav = document.querySelector('.nav');
+
+    if(nav.style.display === 'flex'){
+        nav.style.display = '';
+    }else{
+        nav.style.display = 'flex';
+        nav.style.position = 'absolute';
+        nav.style.top = '72px';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.background = '#fff';
+        nav.style.padding = '20px';
+        nav.style.flexDirection = 'column';
+        nav.style.borderBottom = '1px solid #e5ebe7';
+    }
+}
+
+
+/* SCROLL */
+
+function scrollToSection(id){
+
+    document.getElementById(id).scrollIntoView({
+        behavior:'smooth'
+    });
+
+}
+
+
+/* MODALS */
+
+function openModal(id){
+
+    document.getElementById(id).classList.add('active');
+
+}
+
+
+function closeModal(id){
+
+    document.getElementById(id).classList.remove('active');
+
+}
+
+
+/* BALANCE DEMO */
+
+function checkBalance(){
+
+    const phone =
+        document.getElementById('phoneInput').value.trim();
+
+    const result =
+        document.getElementById('balanceResult');
+
+    if(phone.length < 9){
+
+        result.style.color = '#c62828';
+
+        result.textContent =
+            'Please enter a valid mobile number.';
+
+        return;
+    }
+
+    result.style.color = '#008c50';
+
+    result.textContent =
+        'Demo balance: 12,850 Bonga Points';
+
+}
+
+
+/* REDEMPTION */
+
+function redeem(type){
+
+    alert(
+        'Demo redemption selected: ' +
+        type +
+        '. Connect this button to an authorised rewards API before processing real transactions.'
+    );
+
+}
+
+
+/* CLOSE MODAL WHEN CLICKING OUTSIDE */
+
+document.querySelectorAll('.modal').forEach(modal => {
+
+    modal.addEventListener('click', function(e){
+
+        if(e.target === modal){
+
+            modal.classList.remove('active');
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+  </html>
